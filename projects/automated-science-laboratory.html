@@ -1,0 +1,108 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title>Robotic Chemical Analysis Unit</title>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+        <link rel="stylesheet" href="../assets/css/main.css" />
+    </head>
+    <body class="is-preload">
+
+        <!-- Header -->
+		<header id="header">
+			<div class="inner">
+				<h1 style="font-size: 3em; color: white; line-height: 1.2; margin-bottom: 0.5em;">
+					Dharik<br />Purohit
+				</h1>
+				<a href="#" class="image avatar"><img src="../images/avatar.png" alt="Dharik Purohit" /></a>
+				<h2 style="font-size: 0.8em; color: white; ">
+					<strong>Hello, I'm Dharik</strong>,<br />
+					A mechanical engineering graduate and a master's engineering student passionate <br />
+					about environment, manufacturing, programming, and mechatronics.
+				</h2>
+				<nav>
+					<div class="col-6 col-12-small">
+						<ul class="actions stacked">
+							<li><a href="../index.html#projects" class="button primary fit" onclick="smoothScroll('#projects'); return false;">Projects</a></li>
+							<li><a href="../index.html#about" class="button primary fit" onclick="smoothScroll('#about'); return false;">About Me</a></li>
+							<li><a href="../index.html#touch" class="button primary fit" onclick="smoothScroll('#touch'); return false;">Get In Touch</a></li>
+						</ul>
+					</div>
+				</nav>
+					<script>
+						function smoothScroll(target) {
+							document.querySelector(target).scrollIntoView({ behavior: 'smooth' });
+						}
+					</script>
+				</nav>
+			</div>
+		</header>
+
+        <!-- Main -->
+        <div id="main">
+            <section>
+                <header class="major">
+                    <h2>Robotic Chemical Analysis Unit</h2>
+                    <h3>November 2023 - January 2024</h3>
+                </header>
+                
+                <h3>Objective</h3>
+				<p> The goal of this project was to design a dedicated surface sampling and chemical testing platform for Space Concordia’s Mars rover, optimized for the University Rover Challenge (URC). The system needed to autonomously collect and sort surface samples, mix them with pre-loaded chemical agents, and analyze the results through bioluminescence detection—all without relying on the rover’s main manipulator arm. The final system had to be compact, precise, and capable of both surface and subsurface collection tasks. </p>
+				<div style="height: 500px;">
+                    <model-viewer
+                    src="anaerobic_digester.glb"
+                    shadow-intensity="1"
+                    ar
+                    ar-modes="webxr scene-viewer quick-look"
+                    environment-image="neutral"
+                    touch-action="pan-y"
+                    auto-rotate
+                    rotation-per-second= "15deg"
+                    camera-controls
+					shadow-intensity="1"
+                    alt="A 3D model of an anaerobic digester"
+                    style="width: 100%; height: 100%;"
+                >
+                </model-viewer>
+                </div>
+                
+                <h3>Project Contributions</h3>
+                <p>When i first became the Mechcanical lead for robotics, I designed a custom surface sampling system for Space Concordia Robotics' science payload—built specifically for the University Rover Challenge (URC). The goal was to collect up to three surface samples, sort and process them accurately, and perform chemical testing onboard the rover. In past years, we relied on the main arm to do this, but it led to issues with sample contamination and inconsistent quantities. My solution was a fully separate science payload system designed to improve reliability and repeatability. </p> <p> The system is based around a sheet-metal box that lowers onto the ground. Once in position, a mini sampling arm collects the surface material and retracts. From there, the sample is transferred to a carrousel with a shifting mechanism that ensures we get exactly 5g ± 0.5g of material. The sorted sample is then dropped into a cuvette inside the carrousel, where it mixes with pre-loaded chemical agents. These agents, developed by the chemical team, emit visible light through bioluminescence depending on the sample’s contents—specifically detecting lipids, phosphorus, and calcium carbide. </p> <p> The entire carrousel then rotates to align the cuvette with a spectrometer, which captures the light output for data analysis. I also designed the box to house and support the science payload drill for subsurface sampling, combining both surface and subsurface testing into one compact, automated unit. </p>
+				
+                <h3>Images</h3>
+				<div class="row ">
+                    <div class="col-6"><span class="image fit context" data-hover-text="Showing off the rover with the science unit attached"><img src="../images/science/image1.JPG" alt= /></span></div>
+                    <div class="col-6"><span class="image fit context" data-hover-text="Carousel test from the displaing how to shifting works"><img src="../images/science/image2.JPG" alt= /></span></div>
+                    <div class="col-6"><span class="image fit context"data-hover-text="CAD showing off the whole system"><img src="../images/science/image4.JPG" alt= /></span></div>
+					<div class="col-6"><span class="image fit context"data-hover-text="Close up CAD of the carropulse system"><img src="../images/science/Picture5.jpg" alt= /></span></div>
+				</div>
+				<h3>Skills and Technical Details Gained</h3>
+				<ul> <li>Designed an autonomous chemical testing platform for planetary surface sampling.</li> <li>Collaborated with chemistry and electrical teams to integrate mechanical, chemical, and optical systems.</li> <li>Learned PLM workflows using BILD to coordinate design tasks with other mechanical team members.</li> <li>Gained practical experience in sheet metal manufacturing and rapid prototyping through 3D printing.</li> <li>Refined mechanical accuracy and repeatability through weight-based shifters and carrousel design.</li> </ul>
+                <p> This project helped me build a complex, multi-disciplinary system from the ground up. It gave me hands-on experience in designing for integration, reliability, and scientific accuracy in a robotics competition setting. </p>
+                
+            </section>
+        </div>
+
+        <!-- Footer -->
+		<footer id="footer">
+			<div class="inner">
+				<ul class="icons">
+					<li><a href="https://www.linkedin.com/in/dharik-purohit-101" class="icon brands fa-linkedin" target="_blank"><span class="label">LinkedIn</span></a></li>
+					<li><a href="https://github.com/Dhankism" class="icon brands fa-github" target="_blank"><span class="label">Github</span></a></li>
+					<li><a href="mailto:dharikp@gmail.com" class="icon solid fa-envelope"><span class="label">Email</span></a></li>
+				</ul>
+				</ul>
+			</div>
+		</footer>
+
+        <!-- Scripts -->
+        <script src="../assets/js/jquery.min.js"></script>
+        <script src="../assets/js/jquery.poptrox.min.js"></script>
+        <script src="../assets/js/browser.min.js"></script>
+        <script src="../assets/js/breakpoints.min.js"></script>
+        <script src="../assets/js/util.js"></script>
+        <script src="../assets/js/main.js"></script>
+        <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+        <script nomodule src="https://unpkg.com/@google/model-viewer/dist/model-viewer-legacy.js"></script>
+    </body>
+</html>

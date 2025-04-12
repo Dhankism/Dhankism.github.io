@@ -1,0 +1,107 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title>rover suspension system</title>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+        <link rel="stylesheet" href="../assets/css/main.css" />
+    </head>
+    <body class="is-preload">
+
+        <!-- Header -->
+		<header id="header">
+			<div class="inner">
+				<h1 style="font-size: 3em; color: white; line-height: 1.2; margin-bottom: 0.5em;">
+					Dharik<br /> Purohit
+				</h1>
+				<a href="#" class="image avatar"><img src="../images/avatar.png" alt="Dharik Purohit" /></a>
+				<h2 style="font-size: 0.8em; color: white; ">
+					<strong>Hello, I'm Dharik</strong>,<br />
+					A mechanical engineering graduate and a master's engineering student passionate <br />
+					about environment, manufacturing, programming, and mechatronics.
+				</h2>
+				<nav>
+					<div class="col-6 col-12-small">
+						<ul class="actions stacked">
+							<li><a href="../index.html#projects" class="button primary fit" onclick="smoothScroll('#projects'); return false;">Projects</a></li>
+							<li><a href="../index.html#about" class="button primary fit" onclick="smoothScroll('#about'); return false;">About Me</a></li>
+							<li><a href="../index.html#touch" class="button primary fit" onclick="smoothScroll('#touch'); return false;">Get In Touch</a></li>
+						</ul>
+					</div>
+				</nav>
+					<script>
+						function smoothScroll(target) {
+							document.querySelector(target).scrollIntoView({ behavior: 'smooth' });
+						}
+					</script>
+				</nav>
+			</div>
+		</header>
+
+        <!-- Main -->
+        <div id="main">
+            <section>
+                <header class="major">
+                    <h2>Rover Suspension Device</h2>
+                    <h3>September 2024 - October 2024</h3>
+                </header>
+                
+                <h3>Objective</h3>
+				<p> The goal of this project was to develop a passive suspension system to improve the terrain traversal capabilities of Mars-like rovers. The focus was on creating a reliable rocker-bogie system that could maintain stability and minimize stress across all wheels while navigating steep slopes, rocks, and loose surfaces—particularly for application in the University Rover Challenge. </p>
+				<div style="height: 500px;">
+                    <model-viewer
+                    src="arm.glb"
+                    shadow-intensity="1"
+                    ar
+                    ar-modes="webxr scene-viewer quick-look"
+                    environment-image="neutral"
+                    touch-action="pan-y"
+                    auto-rotate
+                    rotation-per-second= "15deg"
+                    camera-controls
+					shadow-intensity="1"
+                    alt="A 3D model of an anaerobic digester"
+                    style="width: 100%; height: 100%;"
+                >
+                </model-viewer>
+                </div>
+                
+                <h3>Project Contributions</h3>
+                <p> As part of Space Concordia Robotics, I worked on the mechanical design of a 4-wheel rocker-bogie suspension system aimed at enhancing our rover’s mobility over rough terrain. The system was designed for passive operation to minimize complexity and reduce maintenance during field operation. I conducted extensive research into rocker-bogie geometries, force balancing, and mechanical simplification techniques, including how linkages transfer loads during incline traversal and obstacle climbing. </p> <p> While the project was not carried through to fabrication due to resource limitations, it provided a strong learning experience and shaped my approach to mechanical problem-solving in robotics. I gained valuable experience in system-level thinking, force distribution, and terrain-aware design. </p>
+                <h3>Images</h3>
+                <div class="row ">
+					<div class="col-6"><span class="image fit context" data-hover-text="initial stress analysis done for new boogie system"><img src="../images/sus/image2.png" alt= /></span></div>
+                    <div class="col-6"><span class="image fit context" data-hover-text="top view of the rover boogie system"><img src="../images/sus/image1.png" alt= /></span></div>
+                    
+				</div>
+
+				<h3>Skills and Technical Details Gained</h3>
+                <ul> <li>Gained experience in suspension system kinematics and the tradeoffs in passive vs. active mobility systems.</li> <li>Learned how to run preliminary force and stress evaluations using FEA tools for terrain loading scenarios.</li> <li>Improved my understanding of design constraints in rover-scale mechanical systems.</li> <li>Applied structural analysis concepts to early-phase component sizing and material choice.</li> <li>Developed a practical understanding of designing for stability and ground contact in uneven terrain.</li> </ul> 
+				<p> Even though the rocker-bogie suspension wasn’t prototyped, it taught me the importance of mechanical reliability, force modeling, and planning for real-world limitations in robotics design. </p>
+                
+            </section>
+        </div>
+
+        <!-- Footer -->
+		<footer id="footer">
+			<div class="inner">
+				<ul class="icons">
+					<li><a href="https://www.linkedin.com/in/dharik-purohit-101" class="icon brands fa-linkedin" target="_blank"><span class="label">LinkedIn</span></a></li>
+					<li><a href="https://github.com/Dhankism" class="icon brands fa-github" target="_blank"><span class="label">Github</span></a></li>
+					<li><a href="mailto:dharikp@gmail.com" class="icon solid fa-envelope"><span class="label">Email</span></a></li>
+				</ul>
+				</ul>
+			</div>
+		</footer>
+
+        <!-- Scripts -->
+        <script src="../assets/js/jquery.min.js"></script>
+        <script src="../assets/js/jquery.poptrox.min.js"></script>
+        <script src="../assets/js/browser.min.js"></script>
+        <script src="../assets/js/breakpoints.min.js"></script>
+        <script src="../assets/js/util.js"></script>
+        <script src="../assets/js/main.js"></script>
+        <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+        <script nomodule src="https://unpkg.com/@google/model-viewer/dist/model-viewer-legacy.js"></script>
+    </body>
+</html>
