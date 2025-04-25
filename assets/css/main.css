@@ -190,7 +190,7 @@ input, select, textarea {
 
 	hr {
 		border: 0;
-		border-bottom: solid 2px #efefef;
+		border-bottom: solid 4px #efefef;
 		margin: 2em 0;
 	}
 
@@ -3051,6 +3051,13 @@ input, select, textarea {
 	body.is-touch .poptrox-popup .closer {
 		opacity: 1.0 !important;
 	}
+
+	hr {
+	border: 0;
+		height: 1px;
+		background: #ccc;
+		margin: 2em 0;
+}
 
 /* XLarge */
 
