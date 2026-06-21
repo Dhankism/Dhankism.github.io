@@ -1,9 +1,23 @@
-/* Portfolio animations — scroll-reveal, typing, particles, counters, parallax, transitions */
+/* Portfolio animations — aurora bg, scroll-reveal, typing, counters, analytics, admin */
 
 (function () {
 	'use strict';
 
 	var prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+	/* ═══════════════════════ CONFIG ═══════════════════════
+	   Google Analytics 4 Measurement ID.  See ANALYTICS_SETUP.md for the
+	   2-minute steps to create one. Leave the placeholder to disable GA
+	   (the local view tracker + admin panel still work without it). */
+	var GA_MEASUREMENT_ID = 'G-XXXXXXXXXX';
+
+	/* Secret admin panel — open it by either:
+	     • typing this word anywhere on the page, or
+	     • triple-clicking the faint dot in the bottom-left corner.
+	   The password is a light deterrent only: it lives in the page source,
+	   so it is NOT real security. Set ADMIN_PASSWORD = '' to skip the gate. */
+	var ADMIN_SECRET_WORD = 'admin';
+	var ADMIN_PASSWORD    = 'dharik';
 
 	/* ── Intersection Observer: scroll-reveal ─────────────────────────────── */
 
@@ -443,9 +457,188 @@
 		});
 	}
 
+	/* ── Aurora gradient background ────────────────────────────────────────── */
+
+	function initAurora() {
+		if (document.getElementById('aurora-bg')) return;
+		var bg = document.createElement('div');
+		bg.id = 'aurora-bg';
+		bg.setAttribute('aria-hidden', 'true');
+		['b1', 'b2', 'b3', 'b4'].forEach(function (c) {
+			var blob = document.createElement('div');
+			blob.className = 'aurora-blob ' + c;
+			bg.appendChild(blob);
+		});
+		document.body.insertBefore(bg, document.body.firstChild);
+	}
+
+	/* ── Analytics: local view log + optional Google Analytics 4 ───────────── */
+
+	function gaEnabled() {
+		return /^G-[A-Z0-9]{6,}$/.test(GA_MEASUREMENT_ID) && GA_MEASUREMENT_ID !== 'G-XXXXXXXXXX';
+	}
+
+	function trackPageView() {
+		try {
+			var KEY  = 'dp_analytics';
+			var data = JSON.parse(localStorage.getItem(KEY) || '{}');
+			var now  = Date.now();
+			var page = location.pathname.split('/').pop() || 'index.html';
+			data.total = (data.total || 0) + 1;
+			data.pages = data.pages || {};
+			data.pages[page] = (data.pages[page] || 0) + 1;
+			data.recent = data.recent || [];
+			data.recent.unshift({ page: page, t: now, ref: document.referrer || 'direct' });
+			data.recent = data.recent.slice(0, 50);
+			data.first = data.first || now;
+			data.last  = now;
+			localStorage.setItem(KEY, JSON.stringify(data));
+		} catch (e) {}
+	}
+
+	function initAnalytics() {
+		trackPageView();
+		if (!gaEnabled()) return;
+		var s = document.createElement('script');
+		s.async = true;
+		s.src = 'https://www.googletagmanager.com/gtag/js?id=' + GA_MEASUREMENT_ID;
+		document.head.appendChild(s);
+		window.dataLayer = window.dataLayer || [];
+		window.gtag = function () { window.dataLayer.push(arguments); };
+		window.gtag('js', new Date());
+		window.gtag('config', GA_MEASUREMENT_ID);
+	}
+
+	/* ── Secret admin analytics panel ──────────────────────────────────────── */
+
+	function initAdminPanel() {
+		/* Faint corner trigger dot */
+		var dot = document.createElement('div');
+		dot.id = 'admin-dot';
+		dot.setAttribute('aria-hidden', 'true');
+		document.body.appendChild(dot);
+
+		/* Overlay + glass panel */
+		var overlay = document.createElement('div');
+		overlay.id = 'admin-overlay';
+		overlay.innerHTML =
+			'<div class="admin-panel" role="dialog" aria-modal="true">' +
+				'<button class="admin-close" aria-label="Close">&times;</button>' +
+				'<div class="admin-body"></div>' +
+			'</div>';
+		document.body.appendChild(overlay);
+
+		var body     = overlay.querySelector('.admin-body');
+		var unlocked = !ADMIN_PASSWORD;
+
+		function timeAgo(ts) {
+			var s = Math.floor((Date.now() - ts) / 1000);
+			if (s < 60)  return s + 's ago';
+			var m = Math.floor(s / 60);
+			if (m < 60)  return m + 'm ago';
+			var h = Math.floor(m / 60);
+			if (h < 24)  return h + 'h ago';
+			return Math.floor(h / 24) + 'd ago';
+		}
+
+		function renderGate() {
+			body.innerHTML =
+				'<h2>🔒 Admin Access</h2>' +
+				'<p class="admin-sub">Enter the password to view analytics.</p>' +
+				'<div class="admin-gate">' +
+					'<input type="password" id="admin-pass" placeholder="Password" autocomplete="off" />' +
+					'<button class="admin-btn primary" id="admin-unlock">Unlock</button>' +
+				'</div>';
+			var input = body.querySelector('#admin-pass');
+			function go() {
+				if (input.value === ADMIN_PASSWORD) { unlocked = true; renderStats(); }
+				else { input.value = ''; input.placeholder = 'Wrong password'; input.style.borderColor = '#ef4444'; }
+			}
+			body.querySelector('#admin-unlock').addEventListener('click', go);
+			input.addEventListener('keydown', function (e) { if (e.key === 'Enter') go(); });
+			setTimeout(function () { input.focus(); }, 60);
+		}
+
+		function renderStats() {
+			var data = {};
+			try { data = JSON.parse(localStorage.getItem('dp_analytics') || '{}'); } catch (e) {}
+			var pages = data.pages || {};
+			var entries = Object.keys(pages).map(function (k) { return [k, pages[k]]; })
+				.sort(function (a, b) { return b[1] - a[1]; });
+			var recent = data.recent || [];
+			var gaOn = gaEnabled();
+
+			var topPages = entries.length
+				? entries.map(function (e) { return '<li><span>' + e[0] + '</span><span class="count">' + e[1] + '</span></li>'; }).join('')
+				: '<li><span>No data yet</span><span class="count">0</span></li>';
+
+			var recentList = recent.length
+				? recent.slice(0, 12).map(function (r) { return '<li><span>' + r.page + '</span><span class="count">' + timeAgo(r.t) + '</span></li>'; }).join('')
+				: '<li><span>No visits logged</span><span class="count">—</span></li>';
+
+			body.innerHTML =
+				'<h2>📊 Visitor Analytics</h2>' +
+				'<p class="admin-sub">' + (gaOn
+					? 'Google Analytics is live. Local view log shown below.'
+					: 'Local view log (this browser). Add a GA ID for worldwide data.') + '</p>' +
+				'<div class="admin-metrics">' +
+					'<div class="admin-metric"><span class="num">' + (data.total || 0) + '</span><span class="lbl">Local Views</span></div>' +
+					'<div class="admin-metric"><span class="num">' + entries.length + '</span><span class="lbl">Pages Seen</span></div>' +
+					'<div class="admin-metric"><span class="num">' + (data.last ? timeAgo(data.last) : '—') + '</span><span class="lbl">Last Visit</span></div>' +
+				'</div>' +
+				'<div class="admin-section-title">Top Pages (this browser)</div>' +
+				'<ul class="admin-list">' + topPages + '</ul>' +
+				'<div class="admin-section-title">Recent Visits</div>' +
+				'<ul class="admin-list">' + recentList + '</ul>' +
+				'<div class="admin-actions">' +
+					'<a class="admin-btn primary" href="https://analytics.google.com/" target="_blank" rel="noopener">Open Google Analytics ↗</a>' +
+					'<button class="admin-btn ghost" id="admin-reset">Reset Local Data</button>' +
+				'</div>' +
+				'<p class="admin-note">Local stats track only this browser via localStorage. Real, worldwide visitor data — including which pages every visitor views — lives in your Google Analytics dashboard.' +
+					(gaOn ? '' : ' GA is not configured yet — see ANALYTICS_SETUP.md.') + '</p>';
+
+			var reset = body.querySelector('#admin-reset');
+			if (reset) reset.addEventListener('click', function () {
+				localStorage.removeItem('dp_analytics');
+				renderStats();
+			});
+		}
+
+		function open()  { overlay.classList.add('open'); if (unlocked) renderStats(); else renderGate(); }
+		function close() { overlay.classList.remove('open'); }
+
+		overlay.querySelector('.admin-close').addEventListener('click', close);
+		overlay.addEventListener('click', function (e) { if (e.target === overlay) close(); });
+		document.addEventListener('keydown', function (e) { if (e.key === 'Escape') close(); });
+
+		/* Trigger 1: triple-click the corner dot */
+		var clicks = 0, clickTimer = null;
+		dot.addEventListener('click', function () {
+			clicks++;
+			clearTimeout(clickTimer);
+			clickTimer = setTimeout(function () { clicks = 0; }, 600);
+			if (clicks >= 3) { clicks = 0; open(); }
+		});
+
+		/* Trigger 2: type the secret word anywhere */
+		var typed = '';
+		document.addEventListener('keydown', function (e) {
+			if (e.key && e.key.length === 1) {
+				typed = (typed + e.key.toLowerCase()).slice(-ADMIN_SECRET_WORD.length);
+				if (typed === ADMIN_SECRET_WORD.toLowerCase()) open();
+			}
+		});
+	}
+
 	/* ── Init ─────────────────────────────────────────────────────────────── */
 
 	function init() {
+		/* These run regardless of motion preference */
+		initAurora();
+		initAnalytics();
+		initAdminPanel();
+		initScrollProgress();
+
 		if (prefersReducedMotion) {
 			document.querySelectorAll('.reveal, .reveal-left').forEach(function (el) {
 				el.classList.add('is-visible');
@@ -456,8 +649,6 @@
 			return;
 		}
 
-		initScrollProgress();
-		initBgParticles();
 		initScrollReveal();
 		initSectionHeadings();
 		initTypingEffect();
