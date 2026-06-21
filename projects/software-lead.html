@@ -1,109 +1,85 @@
-<!DOCTYPE HTML>
-<html>
-    <head>
-        <title>Software Lead - Robotics Team</title>
-        <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-        <link rel="stylesheet" href="../assets/css/main.css" />
-        <link rel="stylesheet" href="../assets/css/animations.css" />
-    </head>
-    <body class="is-preload">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Software Lead — Dharik Purohit</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <link rel="stylesheet" href="../assets/css/site.css" />
+</head>
+<body>
+  <div class="bg-canvas"></div>
+  <div class="bg-grid"></div>
+  <div class="progress" id="progress"></div>
+  <nav class="nav" id="nav"><div class="wrap-nav">
+    <a href="../index.html" class="nav-logo"><span class="dot"></span>Dharik Purohit</a>
+    <button class="nav-toggle" id="navToggle" aria-label="Menu"><span></span><span></span><span></span></button>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="../index.html#work">Work</a></li>
+      <li><a href="../index.html#about">About</a></li>
+      <li><a href="../index.html#experience">Experience</a></li>
+      <li><a href="../index.html#contact" class="nav-cta">Get in touch</a></li>
+    </ul>
+  </div></nav>
 
-        <!-- Header -->
-        <header id="header">
-            <div class="inner">
-                <h1 data-typing-target style="font-size: 3em; color: white; line-height: 1.2; margin-bottom: 0.5em;">
-                    Dharik<br /> Purohit
-                </h1>
-                <a href="#" class="image avatar"><img src="../images/avatar.png" alt="Dharik Purohit" /></a>
-                <h2 style="font-size: 0.8em; color: white; ">
-                    <strong>Hello, I'm Dharik</strong>,<br />
-                    A mechanical engineering graduate and a master's engineering student passionate <br />
-                    about environment, manufacturing, programming, and mechatronics.
-                </h2>
-                <nav>
-                    <div class="col-6 col-12-small">
-                        <ul class="actions stacked">
-                            <li><a href="../index.html#projects" class="button primary fit" onclick="smoothScroll('#projects'); return false;">Projects</a></li>
-                            <li><a href="../index.html#about" class="button primary fit" onclick="smoothScroll('#about'); return false;">About Me</a></li>
-                            <li><a href="#work_experience" class="button primary fit" onclick="smoothScroll('#work_experience'); return false;">Work Experience</a></li>
-                            <li><a href="../index.html#get_in_touch" class="button primary fit" onclick="smoothScroll('#get_in_touch'); return false;">Get In Touch</a></li>
-                        </ul>
-                    </div>
-                </nav>
-                <script>
-                    function smoothScroll(target) {
-                        document.querySelector(target).scrollIntoView({ behavior: 'smooth' });
-                    }
-                </script>
-            </div>
-        </header>
+  <main class="project-detail">
+    <div class="wrap">
+      <a href="../index.html#work" class="back-link">← All projects</a>
+      <span class="eyebrow reveal">Software &amp; ROS2</span>
+      <h1 class="proj-title reveal d1">Software Lead — Robotics Team</h1>
+      <p class="proj-dates reveal d1">February 2025 – June 2025</p>
 
-        <!-- Main -->
-        <div id="main">
-            <section>
-                <header class="major">
-                    <h2>Software Lead - Robotics Team</h2>
-                    <h3>February 2025 - June 2025</h3>
-                </header>
+      <div class="proj-content reveal">
+        <h2>Objective</h2>
+        <p>As Software Lead for the Space Concordia Robotics Division, my goal was to modernize and streamline the software stack for our Mars rover platform. I focused on implementing ROS2 (Robot Operating System 2) to enable modular, scalable, and robust control of all robotic subsystems, including the arm, mobility, and GUI.</p>
 
-                <h3>Objective</h3>
-                <p>
-                    As Software Lead for the Space Concordia Robotics Division, my goal was to modernize and streamline the software stack for our Mars rover platform. I focused on implementing ROS2 (Robot Operating System 2) to enable modular, scalable, and robust control of all robotic subsystems, including the arm, mobility, and GUI.
-                </p>
+        <h2>Related Open Source Repository</h2>
+        <p>
+          <a href="https://github.com/space-concordia-robotics/robot-repo-ros2" target="_blank" class="btn btn-ghost" style="display:inline-flex;margin-bottom:1rem;">
+            <i class="fa-brands fa-github"></i> View Space Concordia Robotics ROS2 Repo
+          </a>
+        </p>
 
-                <h3>Related Open Source Repository</h3>
-                <p>
-                    <a href="https://github.com/space-concordia-robotics/robot-repo-ros2" target="_blank" class="button icon brands fa-github">
-                        View Space Concordia Robotics ROS2 Repo
-                    </a>
-                </p>
+        <h2>Project Contributions</h2>
+        <p>I led the migration and development of the team's main robotics software using the <a href="https://github.com/space-concordia-robotics/robot-repo-ros2" target="_blank">Space Concordia Robotics ROS2 repository</a>. My work included setting up the ROS2 workspace, integrating sensor and actuator drivers, and developing custom nodes for arm kinematics, navigation, and science operations. I also mentored new team members on ROS2 concepts, version control, and collaborative development workflows.</p>
+        <p>Key achievements included establishing a testing pipelines, and improving system diagnostics and logging. My leadership helped the team deliver a more maintainable and extensible codebase, supporting rapid prototyping and field testing.</p>
 
-                <h3>Project Contributions</h3>
-                <p>
-                    I led the migration and development of the team's main robotics software using the <a href="https://github.com/space-concordia-robotics/robot-repo-ros2" target="_blank">Space Concordia Robotics ROS2 repository</a>. My work included setting up the ROS2 workspace, integrating sensor and actuator drivers, and developing custom nodes for arm kinematics, navigation, and science operations. I also mentored new team members on ROS2 concepts, version control, and collaborative development workflows.
-                </p>
-                <p>
-                    Key achievements included establishing a testing pipelines, and improving system diagnostics and logging. My leadership helped the team deliver a more maintainable and extensible codebase, supporting rapid prototyping and field testing.
-                </p>
+        <h2>Skills &amp; Technical Details</h2>
+        <ul>
+          <li>Deepened expertise in ROS2, including node development, topic/service/action communication, and launch systems.</li>
+          <li>Integrated hardware drivers for sensors (IMU, cameras, encoders) and actuators (motors, servos) into the ROS2 ecosystem.</li>
+          <li>Developed custom ROS2 nodes for robotic arm kinematics, enabling precise control and manipulation tasks.</li>
+          <li>Mentored team members in collaborative software engineering practices (Git, Linux development, ROS2).</li>
+        </ul>
+        <p>This experience strengthened my ability to lead multidisciplinary teams, architect complex robotic systems, and deliver robust, scalable software solutions for real-world applications.</p>
+      </div>
 
-                <h3>Images</h3>
-                <div class="row ">
-                    <div class="col-6"><span class="image fit context" data-hover-text="GUI of the rover in action."><img src="../images/softie/s.jpg" alt="GUI of the rover in action" /></span></div>
-                    <div class="col-6"><span class="image fit context" data-hover-text="Team working on rover for competition."><img src="../images/softie/pics.jfif" alt="Team working" /></span></div>
-                </div>
+      <h2 class="gallery-title reveal">Gallery</h2>
+      <div class="gallery">
+        <a class="gallery-item" href="../images/softie/s.jpg" data-caption="GUI of the rover in action.">
+          <img src="../images/softie/s.jpg" alt="" loading="lazy" />
+        </a>
+        <a class="gallery-item" href="../images/softie/pics.jfif" data-caption="Team working on rover for competition.">
+          <img src="../images/softie/pics.jfif" alt="" loading="lazy" />
+        </a>
+      </div>
+    </div>
+  </main>
 
-                <h3>Skills and Technical Details Gained</h3>
-                <ul>
-                    <li>Deepened expertise in ROS2, including node development, topic/service/action communication, and launch systems.</li>
-                    <li>Integrated hardware drivers for sensors (IMU, cameras, encoders) and actuators (motors, servos) into the ROS2 ecosystem.</li>
-                    <li>Developed custom ROS2 nodes for robotic arm kinematics, enabling precise control and manipulation tasks.</li>
-                    <li>Mentored team members in collaborative software engineering practices (Git, Linux development, ROS2).</li>
-                </ul>
-                <p>
-                    This experience strengthened my ability to lead multidisciplinary teams, architect complex robotic systems, and deliver robust, scalable software solutions for real-world applications.
-                </p>
-            </section>
-        </div>
+  <footer class="footer">
+    <div class="wrap">
+      <div class="socials">
+        <a href="https://www.linkedin.com/in/dharik-purohit-101" target="_blank" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+        <a href="https://github.com/Dhankism" target="_blank" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+        <a href="mailto:dharikp@gmail.com" aria-label="Email"><i class="fa-solid fa-envelope"></i></a>
+      </div>
+      <p class="copy">© <span id="year"></span> Dharik Purohit</p>
+    </div>
+  </footer>
 
-        <!-- Footer -->
-        <footer id="footer">
-            <div class="inner">
-                <ul class="icons">
-                    <li><a href="https://www.linkedin.com/in/dharik-purohit-101" class="icon brands fa-linkedin" target="_blank"><span class="label">LinkedIn</span></a></li>
-                    <li><a href="https://github.com/Dhankism" class="icon brands fa-github" target="_blank"><span class="label">Github</span></a></li>
-                    <li><a href="mailto:dharikp@gmail.com" class="icon solid fa-envelope"><span class="label">Email</span></a></li>
-                </ul>
-            </div>
-        </footer>
-
-        <!-- Scripts -->
-        <script src="../assets/js/jquery.min.js"></script>
-        <script src="../assets/js/jquery.poptrox.min.js"></script>
-        <script src="../assets/js/browser.min.js"></script>
-        <script src="../assets/js/breakpoints.min.js"></script>
-        <script src="../assets/js/util.js"></script>
-        <script src="../assets/js/main.js"></script>
-        <script src="../assets/js/animations.js"></script>
-    </body>
+  <script src="../assets/js/site.js"></script>
+</body>
 </html>

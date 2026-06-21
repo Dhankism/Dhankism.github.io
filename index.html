@@ -1,263 +1,261 @@
-<!DOCTYPE HTML>
-<!--
-	Strata by HTML5 UP
-	html5up.net | @ajlkn
-	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
--->
-<html>
-	<head>
-		<title>Hi my name is Dharik</title>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-		<link rel="stylesheet" href="assets/css/main.css" />
-		<link rel="stylesheet" href="assets/css/animations.css" />
-	</head>
-	<body class="is-preload">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<title>Dharik Purohit — Mechanical Engineer</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<meta name="description" content="Dharik Purohit — MSc Mechanical Engineer working at the intersection of robotics, embedded systems, and sustainable design." />
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+	<link rel="stylesheet" href="assets/css/site.css" />
+</head>
+<body>
+	<div class="bg-canvas"></div>
+	<div class="bg-grid"></div>
+	<div class="progress" id="progress"></div>
 
-		<!-- Scroll progress bar -->
-		<div id="scroll-progress"></div>
+	<!-- Nav -->
+	<nav class="nav" id="nav">
+		<div class="wrap-nav">
+			<a href="#top" class="nav-logo"><span class="dot"></span>Dharik Purohit</a>
+			<button class="nav-toggle" id="navToggle" aria-label="Menu"><span></span><span></span><span></span></button>
+			<ul class="nav-links" id="navLinks">
+				<li><a href="#about">About</a></li>
+				<li><a href="#skills">Skills</a></li>
+				<li><a href="#work">Work</a></li>
+				<li><a href="#experience">Experience</a></li>
+				<li><a href="#contact" class="nav-cta">Get in touch</a></li>
+			</ul>
+		</div>
+	</nav>
 
-		<!-- Header -->
-			<header id="header">
-				<div class="inner">
-					<h1 data-typing-target style="font-size: 3em; color: white; line-height: 1.2; margin-bottom: 0.25em;">
-						Dharik<br /> Purohit
-					</h1>
-					<a href="#" class="image avatar"><img src="images/avatar.png" alt="Dharik Purohit" /></a>
-					<h2 style="font-size: 0.8em; color: white; ">
-						<strong>Hello, I'm Dharik</strong> —<br />
-						MSc graduate in Mechanical Engineering,<br />
-						building things at the intersection of robotics,<br />
-						embedded systems, and sustainable design.
-					</h2>
-
-					<nav>
-					<div class="col-6 col-12-small">
-						<ul class="actions stacked">
-							<li><a href="#projects" class="button primary fit" onclick="smoothScroll('#projects'); return false;">Projects</a></li>
-							<li><a href="#about" class="button primary fit" onclick="smoothScroll('#about'); return false;">About Me</a></li>
-							<li><a href="#work_experience" class="button primary fit" onclick="smoothScroll('#work_experience'); return false;">Work Experience</a></li>
-							<li><a href="#get_in_touch" class="button primary fit" onclick="smoothScroll('#get_in_touch'); return false;">Get In Touch</a></li>
-						</ul>
-					</div>
-					</nav>
-						<script>
-							function smoothScroll(target) {
-								document.querySelector(target).scrollIntoView({ behavior: 'smooth' });
-							}
-						</script>
-					</nav>
+	<!-- Hero -->
+	<header class="hero" id="top">
+		<div class="wrap hero-grid">
+			<div class="hero-copy">
+				<span class="eyebrow reveal">Mechanical Engineer · Montréal</span>
+				<h1 class="reveal d1">Hi, I'm<br /><span class="grad">Dharik Purohit</span></h1>
+				<p class="hero-sub reveal d2">MSc graduate in Mechanical Engineering, building things at the intersection of robotics, embedded systems, and sustainable design.</p>
+				<div class="hero-actions reveal d3">
+					<a href="#work" class="btn btn-primary" data-magnetic>View my work</a>
+					<a href="Dharik Purohit_CV.pdf" target="_blank" class="btn btn-ghost" data-magnetic><i class="fa-solid fa-file-pdf"></i> Résumé</a>
 				</div>
-			</header>
-
-		<!-- Main -->
-			<div id="main">
-					<section id="projects">
-						<h2 class="parallax-heading"><span class="section-heading">Projects</span></h2>
-						<div class="project-grid">
-							<article class="project-card reveal reveal-delay-1">
-								<a href="projects/software-lead.html" class="project-thumb">
-									<img src="images/softie/gui.jfif" alt="Software Lead" />
-									<span class="project-overlay"><span class="overlay-label">View Project</span></span>
-								</a>
-								<div class="project-card-body">
-									<span class="project-tag">Software &amp; ROS2</span>
-									<h3>Software Lead</h3>
-									<p>Built the full ROS2 autonomy stack for Space Concordia's competition rover — navigation, arm control, and sensor fusion.</p>
-								</div>
-							</article>
-							<article class="project-card reveal reveal-delay-2">
-								<a href="projects/custom-6dof-arm.html" class="project-thumb">
-									<img src="images/thumbs/01.jpg" alt="Custom 6DOF Arm" />
-									<span class="project-overlay"><span class="overlay-label">View Project</span></span>
-								</a>
-								<div class="project-card-body">
-									<span class="project-tag">Robotics</span>
-									<h3>Custom 6DOF Robotic Arm</h3>
-									<p>Designed and machined a custom 6-DOF robotic arm from scratch, integrating servo control and forward kinematics.</p>
-								</div>
-							</article>
-							<article class="project-card reveal reveal-delay-3">
-								<a href="projects/low-cost-potentiostat.html" class="project-thumb">
-									<img src="images/thumbs/02.jpg" alt="Cellstat Potentiostat" />
-									<span class="project-overlay"><span class="overlay-label">View Project</span></span>
-								</a>
-								<div class="project-card-body">
-									<span class="project-tag">Electronics</span>
-									<h3>Cellstat Potentiostat</h3>
-									<p>Master's thesis — a low-cost potentiostat for electrochemical cell testing, making lab-grade analysis more accessible.</p>
-								</div>
-							</article>
-							<article class="project-card reveal reveal-delay-4">
-								<a href="projects/automated-science-laboratory.html" class="project-thumb">
-									<img src="images/thumbs/03.jpg" alt="Automated Science Laboratory" />
-									<span class="project-overlay"><span class="overlay-label">View Project</span></span>
-								</a>
-								<div class="project-card-body">
-									<span class="project-tag">Automation</span>
-									<h3>Automated Science Laboratory</h3>
-									<p>Automated sample collection and analysis for a Mars rover simulation, using actuators, sensors, and custom control logic.</p>
-								</div>
-							</article>
-							<article class="project-card reveal reveal-delay-5">
-								<a href="projects/rover-suspension-device.html" class="project-thumb">
-									<img src="images/thumbs/04.jpg" alt="Rover Suspension Device" />
-									<span class="project-overlay"><span class="overlay-label">View Project</span></span>
-								</a>
-								<div class="project-card-body">
-									<span class="project-tag">Mechanical</span>
-									<h3>Rover Suspension Device</h3>
-									<p>Built and tested a rocker-bogie suspension system for a Mars competition rover, validated on loose and uneven terrain.</p>
-								</div>
-							</article>
-							<article class="project-card reveal reveal-delay-6">
-								<a href="projects/anaerobic-digester.html" class="project-thumb">
-									<img src="images/thumbs/05.jpg" alt="Anaerobic Digester" />
-									<span class="project-overlay"><span class="overlay-label">View Project</span></span>
-								</a>
-								<div class="project-card-body">
-									<span class="project-tag">Sustainability</span>
-									<h3>Anaerobic Digester for Home Use</h3>
-									<p>Capstone project — a home-scale anaerobic digester that converts kitchen waste into usable biogas for everyday energy.</p>
-								</div>
-							</article>
-						</div>
-					</section>
-
-					
-					
-					<section id="about">
-						<header class="major">
-							<h2 class="parallax-heading"><span class="section-heading">About me</span></h2>
-						</header>
-						<p class="reveal">Mechanical engineer with hands-on experience building real systems — from Mars-like rovers and robotic arms to electrochemical instruments and biogas digesters. I led the mechanical division at Space Concordia, directing development of competition rovers for three years. I hold an MSc in Mechanical Engineering, with a thesis focused on making electrochemical analysis tools more accessible. I work at the intersection of design, embedded systems, and sustainability.</p>
-					</section>
-
-					<div id="stats" class="reveal">
-						<div class="stat-grid">
-							<div class="stat-item" data-count="6" data-suffix="+">
-								<span class="stat-number">0</span>
-								<span class="stat-label">Projects</span>
-							</div>
-							<div class="stat-item" data-count="3" data-suffix="">
-								<span class="stat-number">0</span>
-								<span class="stat-label">Internships</span>
-							</div>
-							<div class="stat-item" data-count="5" data-suffix="+">
-								<span class="stat-number">0</span>
-								<span class="stat-label">Years Exp.</span>
-							</div>
-							<div class="stat-item" data-count="1" data-suffix="">
-								<span class="stat-number">0</span>
-								<span class="stat-label">Master's Thesis</span>
-							</div>
-						</div>
-					</div>
-					
-				
-
-					 <section id="work_experience">
-						<header class="major">
-							<h2 class="parallax-heading"><span class="section-heading">Work Experience</span></h2>
-						</header>
-						<div class="row">
-							<article class="col-12 reveal-left reveal-delay-1">
-								<p>
-									<span class="image right"><img src="images/jobs/conu.jfif" alt="Laboratory Assistant" /></span>
-									<h3>Laboratory Assistant - Machine Drawing and Design</h3>
-									<p><strong>September 2023 – December 2024</strong><br>Concordia University, Montreal, Quebec</p>
-									<ul>
-										<li>Instructed undergraduate students in mechanical assembly and disassembly techniques, focusing on proper tools and methodologies.</li>
-										<li>Evaluated and graded students’ technical drawings based on engineering standards and accuracy.</li>
-										<li>Demonstrated best practices for CAD design and drawing interpretation, improving students’ understanding of industry standards.</li>
-										<li>Provided one-on-one support to students, addressing their questions about mechanical components.</li>
-									</ul>
-								</p>
-							</article>
-							<article class="col-12 reveal-left reveal-delay-2">
-								<p>
-									<span class="image right"><img src="images/jobs/bomb.png" alt="Flight Performance Internship" /></span>
-									<h3>Flight Performance Internship</h3>
-									<p><strong>January 2021 - April 2021</strong><br>Bombardier Inc., Côte-Vertu, Quebec</p>
-									<ul>
-										<li>Conducted advanced debugging of data processing applications in C#, improving operational efficiency and enhancing data integrity.</li>
-										<li>Compiled and archived large volumes of aircraft flight data, implementing automated solutions to reduce manual errors.</li>
-										<li>Performed in-depth analysis of maneuvering calculations for aircraft systems, leading to enhanced GUI functionality in flight documentation software.</li>
-									</ul>
-								</p>
-							</article>
-							<article class="col-12 reveal-left reveal-delay-3">
-								<p>
-									<span class="image right"><img src="images/jobs/mpb.jfif" alt="Space Division R&D Internship" /></span>
-									<h3>Space Division R&D Internship</h3>
-									<p><strong>August 2019 - December 2019</strong><br>MPB Communication Inc., Pointe-Claire, Quebec</p>
-									<ul>
-										<li>Designed and developed a MATLAB-based tool to process and analyze data from over 15 million wavelength bands, streamlining data comparison and performance tracking.</li>
-										<li>Researched and implemented optical technologies for Mars rover systems, leading to the successful testing and validation of spectrometry laser systems in simulated environments.</li>
-									</ul>
-								</p>
-							</article>
-						</div>
-					</section> 
-
-							
-
-					<section id="get_in_touch">
-						<h2 class="parallax-heading"><span class="section-heading">Get In Touch</span></h2>
-						<div class="row">
-							<div class="col-12 reveal">
-								<ul class="labeled-icons">
-									<li>
-										<h3 class="icon solid fa-envelope"><span class="label">Email</span></h3>
-										<a href="mailto:dharikp@gmail.com">dharikp@gmail.com</a>
-									</li>
-									<li>
-										<h3 class="icon solid fa-home"><span class="label">Address</span></h3>
-										Montreal, Quebec, Canada
-									</li>
-								</ul>
-							</div>
-							<div class="col-12 reveal cv-actions">
-								<a href="Dharik Purohit_CV.pdf" target="_blank" class="button primary icon solid fa-file-pdf">View CV</a>
-								<a href="Dharik Purohit_CV.pdf" download class="button icon solid fa-download">Download CV</a>
-							</div>
-						</div>
-					</section>
 			</div>
-
-
-
-				<!-- WHY ARE YOU ARE READING THIS?! -->
-
-			
-		<!-- Scroll indicator -->
-			<div id="scroll-indicator" aria-hidden="true">
-				<span class="scroll-arrow"></span>
-				<span class="scroll-arrow"></span>
+			<div class="hero-photo reveal d2">
+				<img src="images/avatar.png" alt="Dharik Purohit" />
 			</div>
+		</div>
+		<div class="hero-scroll"><span>Scroll</span><span class="line"></span></div>
+	</header>
 
-		<!-- Page transition overlay -->
-			<div id="page-transition" aria-hidden="true"></div>
-
-		<!-- Footer -->
-			<footer id="footer">
-				<div class="inner">
-					<ul class="icons">
-						<li><a href="https://www.linkedin.com/in/dharik-purohit-101" class="icon brands fa-linkedin" target="_blank"><span class="label">LinkedIn</span></a></li>
-						<li><a href="https://github.com/Dhankism" class="icon brands fa-github" target="_blank"><span class="label">Github</span></a></li>
-						<li><a href="mailto:dharikp@gmail.com" class="icon solid fa-envelope"><span class="label">Email</span></a></li>
-					</ul>
+	<!-- About -->
+	<section id="about">
+		<div class="wrap">
+			<div class="about-grid">
+				<div class="about-text reveal">
+					<span class="eyebrow">About me</span>
+					<h2 class="section-title">Engineering real systems, end to end.</h2>
+					<p>Mechanical engineer with hands-on experience building real systems — from Mars-like rovers and robotic arms to electrochemical instruments and biogas digesters. I led the mechanical division at Space Concordia, directing development of competition rovers for three years.</p>
+					<p>I hold an MSc in Mechanical Engineering, with a thesis focused on making electrochemical analysis tools more accessible. I work at the intersection of design, embedded systems, and sustainability.</p>
+				</div>
+				<div class="about-card glass reveal d2">
+					<h3>At a glance</h3>
+					<ul class="about-meta">
+						<li><span class="k">Location</span><span class="v">Montréal, QC</span></li>
+						<li><span class="k">Education</span><span class="v">MSc, Mechanical Eng.</span></li>
+						<li><span class="k">Focus</span><span class="v">Robotics · Mechatronics</span></li>
+						<li><span class="k">Tools</span><span class="v">CAD · ROS2 · Python</span></li>
+						<li><span class="k">Status</span><span class="v">Open to roles</span></li>
 					</ul>
 				</div>
-			</footer>
+			</div>
 
-		<!-- Scripts -->
-			<script src="assets/js/jquery.min.js"></script>
-			<script src="assets/js/jquery.poptrox.min.js"></script>
-			<script src="assets/js/browser.min.js"></script>
-			<script src="assets/js/breakpoints.min.js"></script>
-			<script src="assets/js/util.js"></script>
-			<script src="assets/js/main.js"></script>
-			<script src="assets/js/animations.js"></script>
+			<!-- Stats -->
+			<div class="stats-grid" id="stats" style="margin-top:3.5rem">
+				<div class="stat glass reveal" data-count="6" data-suffix="+"><span class="num">0</span><span class="label">Projects</span></div>
+				<div class="stat glass reveal d1" data-count="3" data-suffix=""><span class="num">0</span><span class="label">Internships</span></div>
+				<div class="stat glass reveal d2" data-count="5" data-suffix="+"><span class="num">0</span><span class="label">Years Experience</span></div>
+				<div class="stat glass reveal d3" data-count="1" data-suffix=""><span class="num">0</span><span class="label">Master's Thesis</span></div>
+			</div>
+		</div>
+	</section>
 
+	<!-- Skills -->
+	<section id="skills">
+		<div class="wrap">
+			<div class="section-head reveal">
+				<span class="eyebrow">Tech stack</span>
+				<h2 class="section-title">Tools &amp; technologies</h2>
+			</div>
+			<div class="skills-grid">
+				<div class="skill-group glass reveal">
+					<h3>Design &amp; CAD</h3>
+					<div class="skill-tags">
+						<span class="tag">SolidWorks</span><span class="tag">CAD</span><span class="tag">GD&amp;T</span>
+						<span class="tag">DFM</span><span class="tag">Rapid Prototyping</span><span class="tag">3D Printing</span>
+					</div>
+				</div>
+				<div class="skill-group glass reveal d2">
+					<h3>Software</h3>
+					<div class="skill-tags">
+						<span class="tag">Python</span><span class="tag">ROS2</span><span class="tag">C#</span>
+						<span class="tag">MATLAB</span><span class="tag">Git</span><span class="tag">Linux</span>
+					</div>
+				</div>
+				<div class="skill-group glass reveal d3">
+					<h3>Engineering</h3>
+					<div class="skill-tags">
+						<span class="tag">Mechatronics</span><span class="tag">FEA</span><span class="tag">Fluid Dynamics</span>
+						<span class="tag">Control Systems</span><span class="tag">System Integration</span>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- Work / Projects -->
+	<section id="work">
+		<div class="wrap">
+			<div class="section-head reveal">
+				<span class="eyebrow">Selected work</span>
+				<h2 class="section-title">Projects</h2>
+				<p class="lead">A mix of robotics, instrumentation, and sustainable engineering — built, tested, and shipped.</p>
+			</div>
+
+			<div class="filter-bar reveal" id="filterBar"></div>
+
+			<div class="projects-grid" id="projectsGrid">
+				<a href="projects/software-lead.html" class="project reveal" data-tag="Software &amp; ROS2">
+					<div class="project-media"><img src="images/softie/gui.jfif" alt="Software Lead" /></div>
+					<div class="project-body">
+						<span class="project-tag">Software &amp; ROS2</span>
+						<h3>Software Lead</h3>
+						<p>Built the full ROS2 autonomy stack for Space Concordia's competition rover — navigation, arm control, and sensor fusion.</p>
+						<span class="project-link">View project <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+					</div>
+				</a>
+				<a href="projects/custom-6dof-arm.html" class="project reveal d1" data-tag="Robotics">
+					<div class="project-media"><img src="images/thumbs/01.jpg" alt="Custom 6DOF Arm" /></div>
+					<div class="project-body">
+						<span class="project-tag">Robotics</span>
+						<h3>Custom 6DOF Robotic Arm</h3>
+						<p>Designed and machined a custom 6-DOF robotic arm from scratch, integrating servo control and forward kinematics.</p>
+						<span class="project-link">View project <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+					</div>
+				</a>
+				<a href="projects/low-cost-potentiostat.html" class="project reveal d2" data-tag="Electronics">
+					<div class="project-media"><img src="images/thumbs/02.jpg" alt="Cellstat Potentiostat" /></div>
+					<div class="project-body">
+						<span class="project-tag">Electronics</span>
+						<h3>Cellstat Potentiostat</h3>
+						<p>Master's thesis — a low-cost potentiostat for electrochemical cell testing, making lab-grade analysis more accessible.</p>
+						<span class="project-link">View project <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+					</div>
+				</a>
+				<a href="projects/automated-science-laboratory.html" class="project reveal" data-tag="Automation">
+					<div class="project-media"><img src="images/thumbs/03.jpg" alt="Automated Science Laboratory" /></div>
+					<div class="project-body">
+						<span class="project-tag">Automation</span>
+						<h3>Automated Science Laboratory</h3>
+						<p>Automated sample collection and analysis for a Mars rover simulation, using actuators, sensors, and custom control logic.</p>
+						<span class="project-link">View project <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+					</div>
+				</a>
+				<a href="projects/rover-suspension-device.html" class="project reveal d1" data-tag="Mechanical">
+					<div class="project-media"><img src="images/thumbs/04.jpg" alt="Rover Suspension Device" /></div>
+					<div class="project-body">
+						<span class="project-tag">Mechanical</span>
+						<h3>Rover Suspension Device</h3>
+						<p>Built and tested a rocker-bogie suspension system for a Mars competition rover, validated on loose and uneven terrain.</p>
+						<span class="project-link">View project <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+					</div>
+				</a>
+				<a href="projects/anaerobic-digester.html" class="project reveal d2" data-tag="Sustainability">
+					<div class="project-media"><img src="images/thumbs/05.jpg" alt="Anaerobic Digester" /></div>
+					<div class="project-body">
+						<span class="project-tag">Sustainability</span>
+						<h3>Anaerobic Digester for Home Use</h3>
+						<p>Capstone project — a home-scale anaerobic digester that converts kitchen waste into usable biogas for everyday energy.</p>
+						<span class="project-link">View project <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+					</div>
+				</a>
+			</div>
+		</div>
+	</section>
+
+	<!-- Experience -->
+	<section id="experience">
+		<div class="wrap">
+			<div class="section-head reveal">
+				<span class="eyebrow">Career</span>
+				<h2 class="section-title">Experience</h2>
+			</div>
+			<div class="timeline">
+				<div class="tl-item reveal">
+					<img class="tl-logo" src="images/jobs/conu.jfif" alt="Concordia University" />
+					<span class="when">Sep 2023 – Dec 2024</span>
+					<h3>Laboratory Assistant — Machine Drawing &amp; Design</h3>
+					<p class="where">Concordia University, Montréal, QC</p>
+					<ul>
+						<li>Instructed undergraduates in mechanical assembly and disassembly techniques, focusing on proper tools and methodologies.</li>
+						<li>Evaluated and graded technical drawings against engineering standards and accuracy.</li>
+						<li>Demonstrated best practices for CAD design and drawing interpretation, improving students' grasp of industry standards.</li>
+						<li>Provided one-on-one support, addressing questions about mechanical components.</li>
+					</ul>
+				</div>
+				<div class="tl-item reveal">
+					<img class="tl-logo" src="images/jobs/bomb.png" alt="Bombardier" />
+					<span class="when">Jan 2021 – Apr 2021</span>
+					<h3>Flight Performance Intern</h3>
+					<p class="where">Bombardier Inc., Côte-Vertu, QC</p>
+					<ul>
+						<li>Conducted advanced debugging of data-processing applications in C#, improving operational efficiency and data integrity.</li>
+						<li>Compiled and archived large volumes of aircraft flight data, with automated solutions to reduce manual errors.</li>
+						<li>Analyzed maneuvering calculations for aircraft systems, enhancing GUI functionality in flight-documentation software.</li>
+					</ul>
+				</div>
+				<div class="tl-item reveal">
+					<img class="tl-logo" src="images/jobs/mpb.jfif" alt="MPB Communications" />
+					<span class="when">Aug 2019 – Dec 2019</span>
+					<h3>Space Division R&amp;D Intern</h3>
+					<p class="where">MPB Communications Inc., Pointe-Claire, QC</p>
+					<ul>
+						<li>Developed a MATLAB tool to process and analyze data from over 15 million wavelength bands, streamlining comparison and performance tracking.</li>
+						<li>Researched and implemented optical technologies for Mars rover systems, validating spectrometry laser systems in simulated environments.</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- Contact -->
+	<section id="contact" class="contact">
+		<div class="wrap">
+			<span class="eyebrow reveal" style="justify-content:center">Get in touch</span>
+			<h2 class="section-title reveal d1">Let's build something.</h2>
+			<p class="lead reveal d2" style="margin-inline:auto">Based in Montréal, open to opportunities in robotics, mechatronics, and sustainable engineering.</p>
+			<a href="mailto:dharikp@gmail.com" class="contact-mail reveal d2">dharikp@gmail.com</a>
+			<div class="contact-actions reveal d3">
+				<a href="Dharik Purohit_CV.pdf" target="_blank" class="btn btn-primary" data-magnetic><i class="fa-solid fa-file-pdf"></i> View résumé</a>
+				<a href="Dharik Purohit_CV.pdf" download class="btn btn-ghost" data-magnetic><i class="fa-solid fa-download"></i> Download CV</a>
+			</div>
+		</div>
+	</section>
+
+	<!-- Footer -->
+	<footer class="footer">
+		<div class="wrap">
+			<div class="socials">
+				<a href="https://www.linkedin.com/in/dharik-purohit-101" target="_blank" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+				<a href="https://github.com/Dhankism" target="_blank" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+				<a href="mailto:dharikp@gmail.com" aria-label="Email"><i class="fa-solid fa-envelope"></i></a>
+			</div>
+			<p class="copy">© <span id="year"></span> Dharik Purohit · Designed &amp; built from scratch.</p>
+		</div>
+	</footer>
+
+	<script src="assets/js/site.js"></script>
+</body>
 </html>
