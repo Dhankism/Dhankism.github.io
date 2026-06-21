@@ -630,6 +630,22 @@
 		});
 	}
 
+	/* ── Feature modules loader ────────────────────────────────────────────── */
+
+	/* Each feature lives in its own self-contained file under assets/js/features/
+	   and self-initializes. We load them relative to THIS script's URL so the
+	   paths work on the homepage and on the project subpages alike. */
+	function loadFeatures() {
+		var self = document.querySelector('script[src*="animations.js"]');
+		var base = self ? self.src.replace(/animations\.js.*$/, '') : 'assets/js/';
+		['command-palette', 'project-filter', 'skills-section', 'back-to-top'].forEach(function (name) {
+			var s = document.createElement('script');
+			s.src = base + 'features/' + name + '.js';
+			s.async = true;
+			document.head.appendChild(s);
+		});
+	}
+
 	/* ── Init ─────────────────────────────────────────────────────────────── */
 
 	function init() {
@@ -638,6 +654,7 @@
 		initAnalytics();
 		initAdminPanel();
 		initScrollProgress();
+		loadFeatures();
 
 		if (prefersReducedMotion) {
 			document.querySelectorAll('.reveal, .reveal-left').forEach(function (el) {
