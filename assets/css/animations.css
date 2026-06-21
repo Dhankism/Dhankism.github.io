@@ -1,0 +1,688 @@
+/* Portfolio Animation Layer — progressive enhancement on top of main.css */
+
+:root {
+	--accent: #2dd4bf;
+	--accent-rgb: 45, 212, 191;
+	--accent-glow: rgba(45, 212, 191, 0.3);
+	--accent-subtle: rgba(45, 212, 191, 0.12);
+	--sidebar-bg: #111827;
+	--ease-out-quart: cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+/* ─── Light-mode background gradient ─────────────────────────────────────── */
+
+body {
+	background: linear-gradient(150deg, #f0fdf9 0%, #ffffff 35%, #f8fafc 65%, #eef2ff 100%);
+	min-height: 100vh;
+	transition: background 0.35s ease, color 0.35s ease;
+}
+
+/* ─── Color overrides: new near-black + electric teal palette ────────────── */
+
+/* Sidebar: near-black gradient, replace the old dark-brown + bg.jpg */
+#header {
+	background-image:
+		url("images/overlay.png"),
+		linear-gradient(160deg, #1e2d3d 0%, #111827 50%, #091520 100%) !important;
+	background-size: auto, cover !important;
+	background-color: var(--sidebar-bg) !important;
+	overflow: hidden; /* contain particle canvas */
+}
+
+/* Sidebar text */
+#header {
+	color: rgba(249, 250, 251, 0.75);
+}
+
+#header h1,
+#header h2,
+#header h3,
+#header h4 {
+	color: #f9fafb !important;
+}
+
+/* .inner must sit above the canvas */
+#header .inner {
+	position: relative;
+	z-index: 1;
+}
+
+/* Global accent colour override (#49bf9d → #2dd4bf) */
+a {
+	color: var(--accent);
+	border-bottom-color: var(--accent);
+}
+
+a:hover {
+	color: var(--accent) !important;
+}
+
+/* Button defaults */
+.button:hover {
+	border-color: var(--accent) !important;
+	color: var(--accent) !important;
+}
+
+.button:focus {
+	background-color: rgba(var(--accent-rgb), 0.08) !important;
+	border-color: var(--accent) !important;
+	color: var(--accent) !important;
+}
+
+/* Primary button: keep teal bg on main content */
+.button.primary {
+	background-color: var(--accent) !important;
+	border-color: var(--accent) !important;
+	color: #0d1520 !important;
+}
+
+.button.primary:hover {
+	background-color: #4ae0cc !important;
+	border-color: #4ae0cc !important;
+}
+
+.button.primary:active {
+	background-color: #22baa5 !important;
+	border-color: #22baa5 !important;
+}
+
+/* Sidebar nav buttons: glass/outline style */
+#header .button.primary {
+	background-color: rgba(var(--accent-rgb), 0.1) !important;
+	border: 1px solid rgba(var(--accent-rgb), 0.4) !important;
+	color: var(--accent) !important;
+	font-size: 0.78em;
+	letter-spacing: 0.07em;
+	text-transform: uppercase;
+	height: 2.8em;
+}
+
+#header .button.primary:hover {
+	background-color: rgba(var(--accent-rgb), 0.22) !important;
+	border-color: var(--accent) !important;
+}
+
+/* Form focus colours */
+input:focus,
+select:focus,
+textarea:focus {
+	border-color: var(--accent) !important;
+}
+
+/* ─── Scroll-reveal base ─────────────────────────────────────────────────── */
+
+.reveal {
+	opacity: 0;
+	transform: translateY(32px);
+	transition: opacity 0.65s var(--ease-out-quart),
+	            transform 0.65s var(--ease-out-quart);
+}
+
+.reveal.is-visible {
+	opacity: 1;
+	transform: translateY(0);
+}
+
+.reveal-delay-1 { transition-delay: 0.05s; }
+.reveal-delay-2 { transition-delay: 0.15s; }
+.reveal-delay-3 { transition-delay: 0.25s; }
+.reveal-delay-4 { transition-delay: 0.35s; }
+.reveal-delay-5 { transition-delay: 0.45s; }
+.reveal-delay-6 { transition-delay: 0.55s; }
+
+.reveal-left {
+	opacity: 0;
+	transform: translateX(-28px);
+	transition: opacity 0.65s var(--ease-out-quart),
+	            transform 0.65s var(--ease-out-quart);
+}
+
+.reveal-left.is-visible {
+	opacity: 1;
+	transform: translateX(0);
+}
+
+/* ─── Section heading underline reveal ───────────────────────────────────── */
+
+.section-heading {
+	display: inline-block;
+	position: relative;
+	opacity: 0;
+	transform: translateY(12px);
+	transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.section-heading::after {
+	content: '';
+	position: absolute;
+	bottom: -4px;
+	left: 0;
+	width: 0;
+	height: 2px;
+	background: var(--accent);
+	transition: width 0.6s var(--ease-out-quart);
+	border-radius: 2px;
+}
+
+section.is-visible .section-heading {
+	opacity: 1;
+	transform: translateY(0);
+}
+
+section.is-visible .section-heading::after {
+	width: 100%;
+}
+
+section header.major {
+	opacity: 0;
+	transform: translateY(14px);
+	transition: opacity 0.55s var(--ease-out-quart), transform 0.55s var(--ease-out-quart);
+}
+
+section.is-visible header.major {
+	opacity: 1;
+	transform: translateY(0);
+}
+
+/* Parallax headings: no transition — position updates every frame */
+h2.parallax-heading {
+	will-change: transform;
+}
+
+/* ─── Typing cursor ──────────────────────────────────────────────────────── */
+
+.typing-cursor {
+	display: inline-block;
+	width: 2px;
+	height: 0.85em;
+	background: var(--accent);
+	margin-left: 3px;
+	vertical-align: text-bottom;
+	animation: blink 0.9s step-end infinite;
+}
+
+@keyframes blink {
+	0%, 100% { opacity: 1; }
+	50%       { opacity: 0; }
+}
+
+/* ─── Avatar glow ring ───────────────────────────────────────────────────── */
+
+#header .image.avatar {
+	width: 5.5em !important;
+}
+
+#header .image.avatar img {
+	border-radius: 50%;
+	box-shadow:
+		0 0 0 3px var(--accent),
+		0 0 0 6px rgba(45, 212, 191, 0.18),
+		0 0 22px rgba(45, 212, 191, 0.25);
+	animation: avatarGlow 3s ease-in-out infinite alternate;
+}
+
+@keyframes avatarGlow {
+	from {
+		box-shadow:
+			0 0 0 3px var(--accent),
+			0 0 0 6px rgba(45, 212, 191, 0.15),
+			0 0 16px rgba(45, 212, 191, 0.2);
+	}
+	to {
+		box-shadow:
+			0 0 0 3px var(--accent),
+			0 0 0 9px rgba(45, 212, 191, 0.28),
+			0 0 36px rgba(45, 212, 191, 0.5);
+	}
+}
+
+/* ─── Skill chips ────────────────────────────────────────────────────────── */
+
+.skill-chips {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 0.35em;
+	margin-top: 0.85em;
+}
+
+.chip {
+	background: rgba(45, 212, 191, 0.1);
+	border: 1px solid rgba(45, 212, 191, 0.32);
+	color: var(--accent);
+	border-radius: 2em;
+	padding: 0.18em 0.65em;
+	font-size: 0.62em;
+	letter-spacing: 0.06em;
+	text-transform: uppercase;
+	cursor: default;
+	transition: background 0.2s ease, transform 0.2s ease, border-color 0.2s ease;
+}
+
+.chip:hover {
+	background: rgba(45, 212, 191, 0.22);
+	border-color: var(--accent);
+	transform: translateY(-2px);
+}
+
+/* ─── Stats strip ────────────────────────────────────────────────────────── */
+
+#stats {
+	padding: 0.5em 0 2em;
+}
+
+.stat-grid {
+	display: grid;
+	grid-template-columns: repeat(4, 1fr);
+	gap: 1em;
+	border-top: 1px solid #efefef;
+	border-bottom: 1px solid #efefef;
+	padding: 1.75em 0;
+}
+
+.stat-item {
+	text-align: center;
+}
+
+.stat-number {
+	display: block;
+	font-size: 2.2em;
+	font-weight: 700;
+	color: var(--accent);
+	line-height: 1;
+	letter-spacing: -0.02em;
+}
+
+.stat-label {
+	display: block;
+	font-size: 0.68em;
+	color: #a2a2a2;
+	margin-top: 0.5em;
+	text-transform: uppercase;
+	letter-spacing: 0.1em;
+}
+
+/* Responsive: stack to 2-col on small screens */
+@media (max-width: 480px) {
+	.stat-grid {
+		grid-template-columns: repeat(2, 1fr);
+	}
+}
+
+/* ─── Project card grid ──────────────────────────────────────────────────── */
+
+/* CSS Grid replaces the old flex col-5 layout */
+.project-grid {
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	gap: 1.75em;
+	margin-top: 1.5em;
+}
+
+/* Card shell */
+.project-card {
+	background: #fff;
+	border: 1px solid #e8e8e8;
+	border-radius: 0.6em;
+	overflow: hidden;
+	display: flex;
+	flex-direction: column;
+	transition: transform 0.3s var(--ease-out-quart),
+	            box-shadow 0.3s ease,
+	            border-color 0.3s ease;
+}
+
+.project-card:hover {
+	transform: translateY(-5px);
+	box-shadow: 0 14px 36px rgba(0, 0, 0, 0.1);
+	border-color: var(--accent);
+}
+
+/* Thumbnail: forced 16:9 with zoom-on-hover */
+.project-thumb {
+	display: block;
+	position: relative;
+	overflow: hidden;
+	aspect-ratio: 16 / 9;
+	background: #111827;
+}
+
+.project-thumb img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	display: block;
+	transition: transform 0.5s ease, opacity 0.3s ease;
+}
+
+.project-card:hover .project-thumb img {
+	transform: scale(1.06);
+	opacity: 0.82;
+}
+
+/* "View Project" overlay */
+.project-overlay {
+	position: absolute;
+	inset: 0;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	opacity: 0;
+	transition: opacity 0.3s ease;
+	pointer-events: none;
+}
+
+.project-card:hover .project-overlay {
+	opacity: 1;
+}
+
+.overlay-label {
+	background: var(--accent);
+	color: #0d1520;
+	font-size: 0.72em;
+	font-weight: 600;
+	letter-spacing: 0.1em;
+	text-transform: uppercase;
+	padding: 0.5em 1.2em;
+	border-radius: 2em;
+}
+
+/* Card text area */
+.project-card-body {
+	padding: 1.1em 1.35em 1.35em;
+	flex: 1;
+	display: flex;
+	flex-direction: column;
+}
+
+.project-tag {
+	display: inline-block;
+	font-size: 0.62em;
+	font-weight: 600;
+	text-transform: uppercase;
+	letter-spacing: 0.1em;
+	color: var(--accent);
+	margin-bottom: 0.45em;
+}
+
+.project-card h3 {
+	font-size: 0.95em !important;
+	font-weight: 600 !important;
+	color: #555 !important;
+	line-height: 1.4 !important;
+	margin: 0 0 0.55em !important;
+}
+
+.project-card p {
+	font-size: 0.82em;
+	color: #aaa;
+	line-height: 1.65;
+	margin: 0;
+	flex: 1;
+}
+
+/* Responsive */
+@media (max-width: 736px) {
+	.project-grid {
+		grid-template-columns: 1fr;
+	}
+}
+
+/* ─── Nav button shimmer ─────────────────────────────────────────────────── */
+
+#header .button.primary {
+	position: relative;
+	overflow: hidden;
+}
+
+#header .button.primary::before {
+	content: '';
+	position: absolute;
+	top: 0;
+	left: -100%;
+	width: 60%;
+	height: 100%;
+	background: linear-gradient(
+		90deg,
+		transparent 0%,
+		rgba(255, 255, 255, 0.15) 50%,
+		transparent 100%
+	);
+	transform: skewX(-20deg);
+	transition: left 0.45s ease;
+	pointer-events: none;
+}
+
+#header .button.primary:hover::before {
+	left: 160%;
+}
+
+/* ─── Scroll indicator ───────────────────────────────────────────────────── */
+
+#scroll-indicator {
+	position: fixed;
+	bottom: 2.5em;
+	right: 2.5em;
+	z-index: 200;
+	pointer-events: none;
+	opacity: 1;
+	transition: opacity 0.5s ease;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 4px;
+}
+
+#scroll-indicator.hidden {
+	opacity: 0;
+}
+
+.scroll-arrow {
+	display: block;
+	width: 18px;
+	height: 18px;
+	border-right: 2px solid var(--accent);
+	border-bottom: 2px solid var(--accent);
+	transform: rotate(45deg);
+	animation: bounceDown 1.4s ease-in-out infinite;
+}
+
+.scroll-arrow:nth-child(2) {
+	opacity: 0.55;
+	animation-delay: 0.18s;
+}
+
+@keyframes bounceDown {
+	0%, 100% { transform: rotate(45deg) translateY(0);   opacity: 1; }
+	50%       { transform: rotate(45deg) translateY(7px); opacity: 0.4; }
+}
+
+/* ─── Page transition overlay ────────────────────────────────────────────── */
+
+#page-transition {
+	position: fixed;
+	inset: 0;
+	background: var(--sidebar-bg);
+	z-index: 9999;
+	opacity: 0;
+	pointer-events: none;
+	transition: opacity 0.35s ease;
+}
+
+#page-transition.active {
+	opacity: 1;
+	pointer-events: all;
+}
+
+/* ─── Work experience timeline ───────────────────────────────────────────── */
+
+#work_experience .row {
+	position: relative;
+	padding-left: 1.8em;
+}
+
+#work_experience .row::before {
+	content: '';
+	position: absolute;
+	left: 0.35em;
+	top: 0.5em;
+	bottom: 1em;
+	width: 2px;
+	background: linear-gradient(
+		to bottom,
+		var(--accent) 0%,
+		rgba(var(--accent-rgb), 0.18) 100%
+	);
+	border-radius: 2px;
+}
+
+#work_experience article.col-12 {
+	position: relative;
+	padding-bottom: 2.5em;
+}
+
+#work_experience article.col-12::before {
+	content: '';
+	position: absolute;
+	left: -1.55em;
+	top: 0.45em;
+	width: 10px;
+	height: 10px;
+	background: var(--accent);
+	border-radius: 50%;
+	box-shadow: 0 0 0 3px rgba(var(--accent-rgb), 0.18), 0 0 8px rgba(var(--accent-rgb), 0.3);
+}
+
+#work_experience article.col-12 h3 {
+	color: #444 !important;
+	font-size: 1em !important;
+	margin-bottom: 0.25em !important;
+}
+
+#work_experience article.col-12 > p > p {
+	color: #888;
+	font-size: 0.85em;
+	margin-bottom: 0.75em;
+}
+
+/* ─── Image hover caption enhancement ───────────────────────────────────── */
+
+/* Override main.css centered popup → slide-up caption bar */
+.image.context::after {
+	content: attr(data-hover-text) !important;
+	position: absolute !important;
+	top: auto !important;
+	bottom: 0 !important;
+	left: 0 !important;
+	right: 0 !important;
+	transform: translateY(100%) !important;
+	background: linear-gradient(transparent, rgba(0, 0, 0, 0.78)) !important;
+	color: #fff !important;
+	padding: 1.8em 0.9em 0.75em !important;
+	border-radius: 0 !important;
+	font-size: 0.72em !important;
+	font-weight: 400 !important;
+	text-align: left !important;
+	opacity: 1 !important;
+	transition: transform 0.3s var(--ease-out-quart) !important;
+	pointer-events: none !important;
+}
+
+.image.context:hover::after {
+	transform: translateY(0) !important;
+	opacity: 1 !important;
+}
+
+/* ─── CV download buttons ────────────────────────────────────────────────── */
+
+.cv-actions {
+	display: flex;
+	gap: 0.9em;
+	flex-wrap: wrap;
+	margin-top: 1.5em;
+}
+
+.cv-actions .button {
+	display: inline-flex;
+	align-items: center;
+	gap: 0.45em;
+}
+
+/* ─── Model-viewer protection ────────────────────────────────────────────── */
+
+/* Prevent the animation layer from accidentally hiding or blocking 3D viewers */
+model-viewer {
+	display: block !important;
+	pointer-events: auto !important;
+	opacity: 1 !important;
+	transform: none !important;
+}
+
+/* ─── Footer icon hover pulse ────────────────────────────────────────────── */
+
+#footer .icons a {
+	transition: color 0.2s ease, transform 0.2s ease;
+	display: inline-block;
+}
+
+#footer .icons a:hover {
+	transform: translateY(-3px) scale(1.15);
+	color: var(--accent) !important;
+}
+
+/* ─── Scroll progress bar ────────────────────────────────────────────────── */
+
+#scroll-progress {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 0%;
+	height: 3px;
+	background: linear-gradient(90deg, var(--accent), #74efe0);
+	z-index: 9998;
+	border-radius: 0 2px 2px 0;
+	box-shadow: 0 0 8px rgba(var(--accent-rgb), 0.55);
+	transition: width 0.08s linear;
+	pointer-events: none;
+}
+
+/* ─── 3-D card tilt — let JS drive transform, keep box-shadow/border in CSS ─ */
+
+.project-card {
+	will-change: transform;
+}
+
+/* ─── Stacking: page content sits above background particle canvas ────────── */
+
+#main,
+#footer {
+	position: relative;
+	z-index: 2;
+}
+
+/* ─── Reduced motion ─────────────────────────────────────────────────────── */
+
+@media (prefers-reduced-motion: reduce) {
+	.reveal,
+	.reveal-left,
+	.section-heading,
+	section header.major,
+	#projects article,
+	#header .button.primary,
+	#footer .icons a,
+	.chip,
+	.scroll-arrow {
+		transition: none !important;
+		animation: none !important;
+		opacity: 1 !important;
+		transform: none !important;
+	}
+
+	#header .image.avatar img {
+		animation: none !important;
+		box-shadow: 0 0 0 3px var(--accent) !important;
+	}
+
+	.typing-cursor {
+		animation: none;
+	}
+}
