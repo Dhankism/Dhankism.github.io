@@ -445,18 +445,20 @@
 
 	/* ── Init ─────────────────────────────────────────────────────────────── */
 
-	/* Load the custom-cursor module (self-contained; guards its own support) */
-	function loadCursor() {
+	/* Load self-contained add-on modules (each guards its own support) */
+	function loadAddons() {
 		var self = document.querySelector('script[src*="animations.js"]');
 		var base = self ? self.src.replace(/animations\.js.*$/, '') : 'assets/js/';
-		var s = document.createElement('script');
-		s.src = base + 'cursor.js';
-		s.async = true;
-		document.head.appendChild(s);
+		['cursor.js', 'effects.js'].forEach(function (name) {
+			var s = document.createElement('script');
+			s.src = base + name;
+			s.async = true;
+			document.head.appendChild(s);
+		});
 	}
 
 	function init() {
-		loadCursor();
+		loadAddons();
 
 		if (prefersReducedMotion) {
 			document.querySelectorAll('.reveal, .reveal-left').forEach(function (el) {
