@@ -72,14 +72,37 @@
 				scaleMobile: 1.0,
 				color: 0x2dd4bf,
 				backgroundColor: 0x111827,
-				points: 8.0,
-				maxDistance: 20.0,
-				spacing: 16.0,
+				points: 7.0,
+				maxDistance: 18.0,
+				spacing: 18.0,
 				showDots: true
 			});
+
+			/* Force the Vanta canvas firmly into the background, behind and
+			   non-interactive over the sidebar content. Make it subtle so it
+			   clearly reads as a backdrop, not a foreground layer. */
+			var cv = header.querySelector('canvas');
+			if (cv) {
+				cv.style.position = 'absolute';
+				cv.style.top = '0';
+				cv.style.left = '0';
+				cv.style.zIndex = '0';
+				cv.style.pointerEvents = 'none';
+				cv.style.opacity = '0.5';
+			}
+			var inner = header.querySelector('.inner');
+			if (inner) {
+				inner.style.position = 'relative';
+				inner.style.zIndex = '2';
+			}
 		} catch (e) { /* WebGL unavailable — fail silently */ }
 	}
-	loadScript('https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js', function () {
-		loadScript('https://cdnjs.cloudflare.com/ajax/libs/vanta/0.5.24/vanta.net.min.js', initVanta);
-	});
+	/* Only pull in three.js + Vanta where we'll actually use them: a sidebar
+	   with no <model-viewer> (avoids loading a second WebGL/three stack on the
+	   3D project pages). */
+	if (document.getElementById('header') && !document.querySelector('model-viewer')) {
+		loadScript('https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js', function () {
+			loadScript('https://cdnjs.cloudflare.com/ajax/libs/vanta/0.5.24/vanta.net.min.js', initVanta);
+		});
+	}
 }());
