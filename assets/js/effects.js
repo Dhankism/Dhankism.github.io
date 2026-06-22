@@ -1,8 +1,7 @@
 /**
  * effects.js — third-party flair, loaded from CDN.
- *   • Lenis   — smooth momentum scrolling (site-wide)
- *   • Vanta.js NET — animated WebGL background on the dark sidebar (homepage)
- * Both are skipped under prefers-reduced-motion. Self-contained; no build step.
+ *   • Lenis — smooth momentum scrolling (site-wide)
+ * Skipped under prefers-reduced-motion. Self-contained; no build step.
  */
 (function () {
 	'use strict';
@@ -21,7 +20,6 @@
 	function initLenis() {
 		if (typeof window.Lenis !== 'function') return;
 
-		/* Recommended Lenis base CSS */
 		var css = document.createElement('style');
 		css.textContent =
 			'html.lenis, html.lenis body { height: auto; }' +
@@ -35,7 +33,6 @@
 		requestAnimationFrame(raf);
 		window.__lenis = lenis;
 
-		/* Make existing in-page anchor links scroll smoothly via Lenis */
 		document.addEventListener('click', function (e) {
 			var a = e.target.closest && e.target.closest('a[href^="#"]');
 			if (!a) return;
@@ -47,39 +44,4 @@
 		});
 	}
 	loadScript('https://cdn.jsdelivr.net/npm/lenis@1.1.14/dist/lenis.min.js', initLenis);
-
-	/* ── Vanta.js NET on the sidebar (homepage only) ───────────────────────── */
-	function initVanta() {
-		var header = document.getElementById('header');
-		if (!header) return;
-		/* Skip when a model-viewer is present to avoid competing WebGL contexts */
-		if (document.querySelector('model-viewer')) return;
-		if (!window.VANTA || !window.VANTA.NET) return;
-
-		/* Remove the hand-rolled particle canvas so they don't stack */
-		var old = header.querySelector('canvas');
-		if (old) old.remove();
-
-		try {
-			window.__vanta = window.VANTA.NET({
-				el: header,
-				mouseControls: true,
-				touchControls: true,
-				gyroControls: false,
-				minHeight: 200.0,
-				minWidth: 200.0,
-				scale: 1.0,
-				scaleMobile: 1.0,
-				color: 0x2dd4bf,
-				backgroundColor: 0x111827,
-				points: 8.0,
-				maxDistance: 20.0,
-				spacing: 16.0,
-				showDots: true
-			});
-		} catch (e) { /* WebGL unavailable — fail silently */ }
-	}
-	loadScript('https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js', function () {
-		loadScript('https://cdnjs.cloudflare.com/ajax/libs/vanta/0.5.24/vanta.net.min.js', initVanta);
-	});
 }());
